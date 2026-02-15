@@ -47,6 +47,31 @@ export default function RootLayout({
           </div>
         </header>
         {children}
+        
+        {/* Footer */}
+        <footer className="border-t bg-muted/40 py-6 mt-auto">
+          <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
+            <p>
+              © {new Date().getFullYear()} عبد الرحمن خضر (خضر) – Full-Stack Developer
+            </p>
+            <p className="mt-1">
+              مشروع بورتفوليو: متجر إلكتروني مصغر
+              {" • "}
+              <Link
+                href="https://github.com/khadrx/mini-ecommerce-portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                View on GitHub
+              </Link>
+            </p>
+            <p className="mt-1 text-xs">
+              Built with Next.js, Tailwind CSS, shadcn/ui & Zustand
+            </p>
+          </div>
+        </footer>
+        
         <Toaster richColors position="top-right" />
       </body>
     </html>
