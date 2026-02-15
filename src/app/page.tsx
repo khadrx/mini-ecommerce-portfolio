@@ -40,7 +40,7 @@ export default function Home() {
             <CardFooter>
               <Button 
                 className="w-full"
-                onClick={() => addItem({ ...product, quantity: 1 })}
+                onClick={() => addItem(product)}
               >
                 أضف للسلة
               </Button>
