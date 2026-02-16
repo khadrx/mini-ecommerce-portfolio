@@ -4,7 +4,7 @@ import { useCartStore } from "@/lib/cartStore"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Trash2, ArrowLeft } from "lucide-react"
+import { Trash2, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -18,7 +18,7 @@ export default function CartPage() {
         <p className="text-lg text-muted-foreground mb-8">السلة فارغة حاليًا</p>
         <Link href="/">
           <Button size="lg" className="gap-2">
-            <ArrowLeft className="h-5 w-5" />
+            <ArrowRight className="h-5 w-5" />
             تصفح المنتجات
           </Button>
         </Link>

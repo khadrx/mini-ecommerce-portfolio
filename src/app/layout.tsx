@@ -7,6 +7,7 @@ import { useCartStore } from "@/lib/cartStore"
 import { ShoppingCart } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
+import Logo from "@/components/Logo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,9 +36,9 @@ export default function RootLayout({
       >
         <header className="bg-white shadow-sm py-4 mb-8">
           <div className="container mx-auto px-4 flex items-center justify-between">
-            {/* اللوجو أو العنوان */}
+            {/* اللوجو */}
             <Link href="/" className="text-2xl font-bold">
-              متجر خضر
+            <Logo className="w-20 h-auto fill-[#231E1E] text-[#231E1E] dark:text-[#B0B0B0]" />
             </Link>
 
             {/* السلة */}
@@ -51,8 +52,9 @@ export default function RootLayout({
         {/* Footer */}
         <footer className="border-t bg-muted/40 py-6 mt-auto">
           <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
+            
             <p>
-              © {new Date().getFullYear()} عبد الرحمن خضر (خضر) – Full-Stack Developer
+              © {new Date().getFullYear()} OK.Shop | عبد الرحمن خضر (خضر) – Full-Stack Developer
             </p>
             <p className="mt-1">
               مشروع بورتفوليو: متجر إلكتروني مصغر

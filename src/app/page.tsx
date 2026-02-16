@@ -6,12 +6,12 @@ import { Badge } from "@/components/ui/badge"
 import { useCartStore } from "@/lib/cartStore"
 import Link from "next/link"
 import Image from "next/image"
+import { toast } from "sonner"
 
 const products = [
-  { id: 1, name: "هودي أسود كلاسيك", price: 1200, image: "/hoodie-black.jpg" },
-  { id: 2, name: "تيشيرت أبيض مطبوع", price: 450, image: "/tshirt-white.jpg" },
-  { id: 3, name: "جينز أزرق رجالي", price: 1800, image: "/jeans-blue.jpg" },
-  // أضف 4–6 منتجات تانيين
+  { id: 1, name: "هودي أسود كلاسيك", price: 1200, image: "/images/hoodie-black.jpg" },
+  { id: 2, name: "تيشيرت أبيض مطبوع", price: 450, image: "/images/tshirt-white.jpg" },
+  { id: 3, name: "جينز أزرق رجالي", price: 1800, image: "/images/jeans-blue.jpg" },
 ]
 
 export default function Home() {
@@ -44,7 +44,16 @@ export default function Home() {
               </Link>
               <Button
                 className="flex-1"
-                onClick={() => addItem(product)}
+                onClick={() => {
+                  addItem(product)
+                  toast.success("تم إضافة المنتج للسلة!", {
+                    description: `${product.name} - الكمية: 1`,
+                    action: {
+                      label: "عرض السلة",
+                      onClick: () => window.location.href = "/cart",
+                    },
+                  })
+                }}
               >
                 أضف للسلة
               </Button>
