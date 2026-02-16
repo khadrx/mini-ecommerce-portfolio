@@ -1,4 +1,6 @@
-import { create } from 'zustand'
+"use client"
+
+import { create } from "zustand"
 
 type CartItem = {
   id: number
@@ -8,9 +10,9 @@ type CartItem = {
   quantity: number
 }
 
-type CartState = {
+type CartStore = {
   items: CartItem[]
-  addItem: (product: Omit<CartItem, 'quantity'>) => void
+  addItem: (product: Omit<CartItem, "quantity">) => void
   removeItem: (id: number) => void
   updateQuantity: (id: number, quantity: number) => void
   clearCart: () => void
@@ -18,7 +20,7 @@ type CartState = {
   totalPrice: () => number
 }
 
-export const useCartStore = create<CartState>((set, get) => ({
+export const useCartStore = create<CartStore>((set, get) => ({
   items: [],
   addItem: (product) => set((state) => {
     const existing = state.items.find(i => i.id === product.id)

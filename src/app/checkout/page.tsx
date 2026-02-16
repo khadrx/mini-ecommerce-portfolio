@@ -7,11 +7,14 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "sonner"
 import Link from "next/link"
+
+import { useRouter } from "next/navigation" // ← أضف ده
 import { useState } from "react"
 import Image from "next/image"
 
 export default function CheckoutPage() {
   const { items, totalPrice, clearCart } = useCartStore()
+  const router = useRouter() // ← أضف ده
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,17 +37,17 @@ export default function CheckoutPage() {
 
     setIsSubmitting(true)
 
-    // محاكاة عملية الدفع (3 ثواني تأخير عشان يحس إنها حقيقية)
+    // محاكاة دفع (2 ثواني تأخير)
     setTimeout(() => {
       toast.success("تم إتمام الطلب بنجاح!", {
         description: `سيتم التواصل معك قريبًا على ${formData.phone}`,
-        action: {
-          label: "عرض الطلبات",
-          onClick: () => window.location.href = "/cart", // أو صفحة طلبات مستقبلية
-        },
       })
 
-      clearCart() // تفريغ السلة
+      clearCart()
+
+      // التحويل باستخدام useRouter (الطريقة الصحيحة في Next.js)
+      router.push("/success")
+
       setIsSubmitting(false)
     }, 2000)
   }
@@ -112,48 +115,22 @@ export default function CheckoutPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="name">الاسم الكامل *</Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                  />
+                  <Input id="name" name="name" value={formData.name} onChange={handleChange} required />
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="email">البريد الإلكتروني *</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                  />
+                  <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required />
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="phone">رقم الهاتف *</Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                  />
+                  <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} required />
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="address">العنوان الكامل *</Label>
-                  <Input
-                    id="address"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    required
-                  />
+                  <Input id="address" name="address" value={formData.address} onChange={handleChange} required />
                 </div>
 
                 <Button 

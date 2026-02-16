@@ -42,9 +42,6 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
     notFound()
   }
 
-  // الـonClick هيشتغل client-side بفضل Zustand + toast
-  const addItem = useCartStore.getState().addItem // استخدم getState بدل hook في server
-
   return (
     <div className="container mx-auto py-12 px-4 max-w-5xl" dir="rtl">
       <Link href="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8">
@@ -74,10 +71,6 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
 
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <AddToCartButton product={product} />
-
-            <Button variant="outline" size="lg" className="flex-1 py-6 text-lg">
-              اشترِ الآن
-            </Button>
           </div>
 
           <div className="grid grid-cols-2 gap-4 text-sm text-muted-foreground">

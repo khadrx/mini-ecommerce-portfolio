@@ -25,10 +25,6 @@ export default function AddToCartButton({ product }: Props) {
                 addItem({ id: product.id, name: product.name, price: product.price, image: product.image })
                 toast.success("تم إضافة المنتج للسلة!", {
                     description: `${product.name} - الكمية: 1`,
-                    action: {
-                        label: "عرض السلة",
-                        onClick: () => window.location.href = "/cart",
-                    },
                 })
             }}
         >
