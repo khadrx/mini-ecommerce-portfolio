@@ -115,8 +115,14 @@ export default function CartPage() {
                 <span>{totalPrice()} ج.م</span>
               </div>
 
-              <Button className="w-full py-6 text-lg" disabled={totalItems() === 0}>
-                الدفع الآن
+              <Button
+                className="w-full py-6 text-lg"
+                disabled={totalItems() === 0}
+                asChild
+              >
+                <Link href="/checkout">
+                  الدفع الآن
+                </Link>
               </Button>
 
               <Button
